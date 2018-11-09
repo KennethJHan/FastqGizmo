@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FastqGizmo Report</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    <script>      google.charts.load('current', {'packages':['bar']});      google.charts.setOnLoadCallback(drawChart);      function drawChart() {        var data = google.visualization.arrayToDataTable([          ['Read','A','C','G','T','N'],          ['Read1',305,167,178,344,16],          ['Read2',442,211,103,209,45],        ]);        var options = {          chart: {            title: 'Base by read',          }        };        var chart = new google.charts.Bar(document.getElementById('base_chart'));        chart.draw(data, google.charts.Bar.convertOptions(options));      }    </script>
+   <style>
+     body {position: relative;}
+     ul.nav-pills {top:20px; position: fixed;}
+     #title {}
+     #BasicStat {}
+     #NBaseStat {}
+     @media screen and (max-width: 810px) { #title, #BasicStat, #NBaseStat { margin-left:150px; } }
+     .footer { color: black; text-align: center; }
+   </style>
+  </head>
+  <body data-spy='scroll' data-target='#contentScrollspy' data-offset='20'>
+    <div class='container'>
+      <div class='row'>
+        <nav class='col-sm-3' id='contentScrollspy'>
+          <ul class='nav nav-pills nav-stacked'>
+            <li class='active'><a href='#title'>Title</a></li>
+            <li><a href='#BasicStat'>Basic Stat</a></li>
+            <li><a href='#NBaseStat'>NBase Stat</a></li>
+          </ul>
+        </nav>
+    <a href="https://github.com/KennethJHan/FastqGizmo">      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">    </a>
+        <div class='col-sm-9'>
+          <div id='title' class='jumbotron'>
+            <h1>FastqGizmo</h1>
+            <p>Report</p>
+          </div>
+          <div id='BasicStat'>
+            <h3>Basic Stat</h3>
+            <table class='table table-striped'>
+              <tr>
+                <th>Read</th><th>A</th><th>C</th><th>G</th><th>T</th><th>N</th><th>Average Base Quality</th>
+              </tr>
+              <tr>
+                <td>Read1</td><td>305</td><td>167</td><td>178</td><td>344</td><td>16</td><td>33.277227722772274</td>
+              </tr>
+              <tr>
+                <td>Read2</td><td>442</td><td>211</td><td>103</td><td>209</td><td>45</td><td>39.87128712871287</td>
+              </tr>
+            </table>
+            <br>
+            <div id='base_chart' style='width:800px; height: 500px;'></div>
+          </div>
+          <br><br>
+          <div id='NBaseStat'>
+            <h3>NBaseStat</h3>
+              <table class='table table-striped'>
+                <tr><th>Read</th><th>Number of N</th><th>Number of Reads</th></tr>                <tr><td>Read1</td><td>0</td><td>7</td></tr><tr><td>Read1</td><td>1</td><td>2</td></tr><tr><td>Read1</td><td>14</td><td>1</td></tr>
+                <tr><td>Read2</td><td>0</td><td>7</td></tr><tr><td>Read2</td><td>3</td><td>2</td></tr><tr><td>Read2</td><td>39</td><td>1</td></tr>
+              </table>
+          </div>
+        </div>
+        <div class='footer'>FastqGizmo <a href="https://www.fastqgizmo.com">https://www.fastqgizmo.com</a></div>
+      </div>
+    </div>
+    <br><br>
+  </body>
+</head>
